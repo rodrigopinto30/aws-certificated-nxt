@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Iniciando contenedores (Next.js, MySQL, phpMyAdmin)..."
+docker compose up -d --build
+echo "Sistema levantado. phpMyAdmin en http://localhost:8080"

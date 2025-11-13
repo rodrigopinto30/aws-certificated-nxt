@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: aws_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: aws_certs_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: aws_phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql-db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql-db
+
+  next-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: aws_nxt_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app               
+    depends_on:
+      - mysql-db
+    environment:
+      DATABASE_HOST: mysql-db
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: aws_certs_db
+      NODE_ENV: development
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+    command: sleep infinity
+
+volumes:
+  db_data:

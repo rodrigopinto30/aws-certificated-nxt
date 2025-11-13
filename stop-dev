@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Apagando y eliminando contenedores..."
+docker compose down
+echo "Sistema apagado."

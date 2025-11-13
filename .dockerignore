@@ -1,0 +1,11 @@
+# Directorios de Next.js
+.next
+out
+node_modules
+npm-debug.log
+
+# Configuración y Entorno
+.env
+.env.local
+.git
+.vscode
