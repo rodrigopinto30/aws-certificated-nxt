@@ -13,10 +13,15 @@ import Link from "next/link";
 
 const NavigationMenuComponent = () => {
   return (
-    <div className="flex flex-row justify-center items-center h-[60px]">
+    <header className="sticky top-0 z-50 flex flex-row justify-center items-center h-[60px] bg-white">
       {/* <Link href="/">icon</Link> */}
       <NavigationMenu className="border-1 border-gray-500 p-1 rounded-2xl">
         <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/">Home</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>References</NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -30,7 +35,17 @@ const NavigationMenuComponent = () => {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
-              <Link href="/signup">About us</Link>
+              <Link href="/career">Career</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/pricing">Pricing</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/about-us">About us</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
         </NavigationMenuList>
@@ -38,12 +53,12 @@ const NavigationMenuComponent = () => {
           <Button asChild className="rounded-2xl">
             <Link href="/login">Login</Link>
           </Button>
-          <Button asChild className="rounded-2xl">
+          {/* <Button asChild className="rounded-2xl">
             <Link href="/signup">Signup</Link>
-          </Button>
+          </Button> */}
         </div>
       </NavigationMenu>
-    </div>
+    </header>
   );
 };
 
