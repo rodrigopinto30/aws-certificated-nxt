@@ -28,7 +28,10 @@ const CertificationCard = ({ cert }: CertificationCardProps) => {
   //const levelClass = "bg-gray-500";
 
   return (
-    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2 border-gray-200">
+    <Card
+      className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2 border-gray-200"
+      data-testid="certification-card"
+    >
       <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
         <div className="flex flex-col space-y-1.5">
           <CardTitle className="text-lg font-semibold leading-tight">
@@ -42,7 +45,10 @@ const CertificationCard = ({ cert }: CertificationCardProps) => {
           </div>
         </div>
         {/* Icono de la certificación */}
-        <Cloud className="h-8 w-8 text-blue-600" />
+        <Cloud
+          className="h-8 w-8 text-blue-600"
+          data-testid="certification-icon"
+        />
       </CardHeader>
       <CardContent className="pt-2">
         <CardDescription className="text-sm text-gray-600">

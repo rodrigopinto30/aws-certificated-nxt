@@ -9,11 +9,12 @@ export interface Metrica {
 
 export interface AwsCertification {
     id: number;
-    level: 'Foundational' | 'Associate' | 'Professional' | 'Specialty';
     title: string;
-    path: string;
+    level: 'Foundational' | 'Associate' | 'Professional' | 'Specialty';
     description: string;
-    icon: ElementType;
+    path: string;
+    // icon: ElementType;
+    icon: string;
 }
 
 export interface Testimonios {
