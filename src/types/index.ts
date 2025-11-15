@@ -4,7 +4,8 @@ export interface Metrica {
     id: number;
     value: string;
     label: string;
-    icon: ElementType;
+    proposal?: string;
+    icon?: ElementType;
 }
 
 export interface AwsCertification {
