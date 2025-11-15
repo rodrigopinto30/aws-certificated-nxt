@@ -25,8 +25,8 @@ const CertificationRouteSection = () => {
   }, [autoplay]);
 
   return (
-    <section className="overflow-hidden " ref={emblaRef}>
-      <div className="flex">
+    <section className="overflow-hidden " role="region" ref={emblaRef}>
+      <div className="flex" data-testid="metrica-card">
         {pathData.map((item: Metrica, index) => (
           <MetricaCard key={index} met={item} />
         ))}
