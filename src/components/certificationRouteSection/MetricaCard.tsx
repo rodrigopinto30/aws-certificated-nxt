@@ -8,6 +8,7 @@ interface MetricaCardProps {
 const MetricaCard = ({ met }: MetricaCardProps) => {
   return (
     <motion.div
+      data-testid="metrica-props-card"
       className="flex-[0_0_100%] flex flex-col justify-center items-center py-20"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
