@@ -1,37 +1,23 @@
-import React from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { awsCertifications } from "@/data/aws-certifications";
-import { Badge } from "@/components/ui/badge";
-import { Cloud } from "lucide-react";
+import { motion } from "framer-motion";
 import { Metrica } from "@/types";
 
 interface MetricaCardProps {
-  // met: Metrica;
   met: Metrica;
 }
 
 const MetricaCard = ({ met }: MetricaCardProps) => {
   return (
-    <Card className="flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:scale-[1.02] border-2 border-gray-200">
-      <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
-        <div className="flex flex-col space-y-1.5">
-          <CardTitle className="text-lg font-semibold leading-tight">
-            {met.label}
-          </CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="pt-2">
-        <CardDescription className="text-sm text-gray-600">
-          dqweqdw
-        </CardDescription>
-      </CardContent>
-    </Card>
+    <motion.div
+      className="flex-[0_0_100%] flex flex-col justify-center items-center py-20"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
+    >
+      <div className="text-7xl font-bold">{met.label}</div>
+      <div className="text-7xl text-indigo-500 font-extrabold mt-4">
+        {met.value}
+      </div>
+    </motion.div>
   );
 };
 

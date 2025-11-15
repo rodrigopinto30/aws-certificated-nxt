@@ -1,23 +1,35 @@
-import React from "react";
+"use client";
 import { pathData } from "@/data/path-data";
+import useEmblaCarousel from "embla-carousel-react";
+import { motion } from "framer-motion";
+import { useEffect, useCallback } from "react";
+import MetricaCard from "./MetricaCard";
+import { Metrica } from "@/types";
 
 const CertificationRouteSection = () => {
-  return (
-    <section className="bg-pink-200 h-screen w-full snap-start flex flex-col items-center justify-center transition-colors duration-500">
-      <div className="max-w-7xl w-full mx-auto px-4 text-center">
-        <h2 className="text-5xl md:text-6xl font-extrabold mb-4">
-          Master the AWS Core Services
-        </h2>
-        <p className="text-xl md:text-2xl font-light mb-12">
-          Start with Cloud Computing fundamentals, then choose your
-          specialization path among the 12 key certifications.
-        </p>
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 h-auto">
-          {pathData.map((path: any, index: number) => (
-            <div key={index}>{path.metrica}</div>
-          ))}
-        </div>
+  const autoplayDelay = 4000;
+  const autoplay = useCallback(() => {
+    if (!emblaApi) return;
+    const timer = setInterval(() => {
+      emblaApi.scrollNext();
+    }, autoplayDelay);
+
+    return () => clearInterval(timer);
+  }, [emblaApi]);
+
+  useEffect(() => {
+    const stop = autoplay();
+    return stop;
+  }, [autoplay]);
+
+  return (
+    <section className="overflow-hidden " ref={emblaRef}>
+      <div className="flex">
+        {pathData.map((item: Metrica, index) => (
+          <MetricaCard key={index} met={item} />
+        ))}
       </div>
     </section>
   );
