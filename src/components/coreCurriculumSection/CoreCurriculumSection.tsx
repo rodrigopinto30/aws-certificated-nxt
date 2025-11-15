@@ -2,11 +2,18 @@ import { awsCertifications } from "@/data/aws-certifications";
 import CertificationCard from "./CertificationCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { AwsCertification } from "@/types/index";
+
+interface CertificationCardProps {
+  //   cert: AwsCertification;
+  cert: AwsCertification;
+}
 
 const CoreCurriculumSection = () => {
   return (
     <section
       id="section-2"
+      data-testid="core-curriculum-section"
       className="h-fit w-full snap-start flex items-center justify-center  text-gray-700 p-4"
     >
       <div className="max-w-7xl w-full mx-auto px-4 text-center">
@@ -20,7 +27,7 @@ const CoreCurriculumSection = () => {
 
         {/* Cuadrícula de Certificaciones (3x4 en Desktop, 2x6 en Tablet, 1x12 en Móvil) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 h-auto">
-          {awsCertifications.map((cert) => (
+          {awsCertifications.map((cert: any) => (
             <CertificationCard key={cert.id} cert={cert} />
           ))}
         </div>
