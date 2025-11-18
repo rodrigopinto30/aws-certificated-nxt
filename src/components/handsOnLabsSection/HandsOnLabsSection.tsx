@@ -22,7 +22,10 @@ const HandsOnLabsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          data-testid="lab-container"
+        >
           {labSteps.map((step) => (
             <LabStepCard key={step.id} step={step} />
           ))}
