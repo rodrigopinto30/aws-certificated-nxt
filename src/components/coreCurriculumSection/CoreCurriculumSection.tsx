@@ -32,7 +32,7 @@ const CoreCurriculumSection = () => {
           ))}
         </div>
 
-        <div className="mt-10">
+        {/* <div className="mt-10">
           <Link href="/signup" passHref>
             <Button
               size="lg"
@@ -41,7 +41,7 @@ const CoreCurriculumSection = () => {
               View Detailed Curriculums
             </Button>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
