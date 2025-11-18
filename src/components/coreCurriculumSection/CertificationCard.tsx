@@ -5,13 +5,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-// import { awsCertifications } from "@/data/aws-certifications";
 import { Badge } from "@/components/ui/badge";
 import { Cloud } from "lucide-react";
 import { AwsCertification } from "@/types";
 
 interface CertificationCardProps {
-  //   cert: AwsCertification;
   cert: AwsCertification;
 }
 
@@ -25,7 +23,6 @@ const levelColors = {
 const CertificationCard = ({ cert }: CertificationCardProps) => {
   const IconComponent = cert.icon;
   const levelClass = levelColors[cert.level] || "bg-gray-500";
-  //const levelClass = "bg-gray-500";
 
   return (
     <Card
