@@ -1,4 +1,5 @@
 import { ElementType } from "react";
+import { LucideIcon } from 'lucide-react';
 
 export interface Metrica {
     id: number;
@@ -24,4 +25,11 @@ export interface Testimonios {
     author: string;
     role: string;
     avatarUrl: string;
+}
+
+export interface CertificacionPaso {
+  id: number;
+  icon: LucideIcon;
+  title: string;
+  description: string;
 }
