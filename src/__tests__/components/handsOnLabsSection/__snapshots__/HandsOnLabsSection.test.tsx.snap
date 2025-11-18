@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`HandsOnLabs Section Should match snapshot 1`] = `
+{
+  "$$typeof": Symbol(react.forward_ref),
+  "render": [Function],
+}
+`;
