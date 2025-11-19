@@ -2,7 +2,6 @@ import LabStepCard from "@/components/handsOnLabsSection/LabStepCard";
 import { render, screen } from "@testing-library/react";
 import { labSteps } from "@/data/lab-data";
 import HandsOnLabsSection from "@/components/handsOnLabsSection/HandsOnLabsSection";
-import { Container } from "lucide-react";
 
 describe("HandsOnLabs Section", () => {
   it("Should render title", () => {
@@ -59,7 +58,7 @@ describe("HandsOnLabs Section", () => {
   });
 
   it("Should match snapshot", () => {
-    render(<HandsOnLabsSection />);
-    expect(Container).toMatchSnapshot();
+    const { container } = render(<HandsOnLabsSection />);
+    expect(container).toMatchSnapshot();
   });
 });
