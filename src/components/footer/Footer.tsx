@@ -22,7 +22,10 @@ const Footer = () => {
     <footer className="bg-gray-800 text-gray-300 border-t border-gray-700">
       <div className="container mx-auto px-4 max-w-7xl pt-12 pb-6">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 border-b border-gray-700 pb-10">
-          <div className="col-span-2 md:col-span-2 space-y-4">
+          <div
+            className="col-span-2 md:col-span-2 space-y-4"
+            data-testid="footer-card"
+          >
             <div
               className="flex items-center text-white text-2xl font-bold"
               data-testid="logo-section"
@@ -40,7 +43,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-1" data-testid="footer-card">
             <h4 className="text-lg font-semibold text-white mb-3">
               Quick Links
             </h4>
@@ -61,7 +64,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-1" data-testid="footer-card">
             <h4 className="text-lg font-semibold text-white mb-3">Resources</h4>
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
@@ -77,7 +80,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="col-span-1">
+          <div className="col-span-1" data-testid="footer-card">
             <h4 className="text-lg font-semibold text-white mb-3">Connect</h4>
             <div className="flex space-x-4">
               <Link
@@ -112,7 +115,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright Bar */}
         <div className="mt-6 text-center text-sm text-gray-500">
           <p data-testid="copyright">
             &copy; {new Date().getFullYear()} CloudCertify Pro. All rights
