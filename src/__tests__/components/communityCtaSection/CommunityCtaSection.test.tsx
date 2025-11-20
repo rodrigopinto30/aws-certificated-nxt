@@ -12,7 +12,7 @@ describe("Community Cta Section", () => {
   it("Should render paragraph", () => {
     render(<CommunitySection />);
     expect(
-      screen.getByText(/Don't learn in isolation. Join thousands/i)
+      screen.getByText(/Dont learn in isolation. Join thousands/i)
     ).toBeInTheDocument();
   });
 
