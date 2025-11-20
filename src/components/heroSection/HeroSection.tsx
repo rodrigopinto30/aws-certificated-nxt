@@ -1,6 +1,3 @@
-import Image from "next/image";
-import React from "react";
-import awsImage from "../../../public/aws-devops-professional-engineer-course-training-online-banner.png";
 import { Button } from "../ui/button";
 
 const HeroSection = () => {

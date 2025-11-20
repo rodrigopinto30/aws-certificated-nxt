@@ -17,7 +17,7 @@ const CommunitySection = () => {
             className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto"
             data-testid="community-subtitle"
           >
-            Don't learn in isolation. Join thousands of cloud enthusiasts and
+            Dont learn in isolation. Join thousands of cloud enthusiasts and
             certified engineers to share knowledge, solve problems, and
             accelerate your career.
           </p>

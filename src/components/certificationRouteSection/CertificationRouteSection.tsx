@@ -1,7 +1,6 @@
 "use client";
 import { pathData } from "@/data/path-data";
 import useEmblaCarousel from "embla-carousel-react";
-import { motion } from "framer-motion";
 import { useEffect, useCallback } from "react";
 import MetricaCard from "./MetricaCard";
 import { Metrica } from "@/types";

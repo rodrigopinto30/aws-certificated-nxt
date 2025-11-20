@@ -15,10 +15,15 @@ jest.mock("embla-carousel-react", () => ({
 // Framer Motion mock
 jest.mock("framer-motion", () => {
   const Original = jest.requireActual("framer-motion");
+  type DivMotionProps = React.ComponentProps<"div"> & {
+    initial?: unknown;
+    animate?: unknown;
+    transition?: unknown;
+  };
   return {
     ...Original,
     motion: {
-      div: (props: any) => <div {...props} />,
+      div: (props: DivMotionProps) => <div {...props} />,
     },
   };
 });
@@ -66,24 +71,13 @@ describe("Certification route section", () => {
     expect(clearSpy).toHaveBeenCalledTimes(1);
   });
 
-  // Autoplay should call scrollNext
-  /*   it("Should call scrollNext automatically after delay", () => {
-    render(<CertificationRouteSection />);
-
-    // adelanta 4 segundos
-    jest.advanceTimersByTime(4000);
-
-    expect(scrollNext).toHaveBeenCalled();
-  }); */
-
-  // Snapshot with the slider
-  /*   it("Should match snapshot", () => {
-    const { container } = render(<CertificationRouteSection />);
-    expect(container).toMatchSnapshot();
-  }); */
-
   it("Should not crash if Metrica has missing fields", () => {
-    const brokenItem = { label: undefined, value: undefined } as any;
+    const brokenItem = {
+      id: 0,
+      label: undefined,
+      value: undefined,
+    } as unknown as Metrica;
+
     render(<MetricaCard met={brokenItem} />);
     expect(screen.getByTestId("metrica-props-card")).toBeInTheDocument();
   });
