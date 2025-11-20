@@ -1,4 +1,3 @@
-import LabStepCard from "@/components/handsOnLabsSection/LabStepCard";
 import { render, screen } from "@testing-library/react";
 import { labSteps } from "@/data/lab-data";
 import HandsOnLabsSection from "@/components/handsOnLabsSection/HandsOnLabsSection";

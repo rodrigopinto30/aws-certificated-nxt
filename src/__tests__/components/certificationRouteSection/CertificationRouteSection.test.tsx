@@ -15,6 +15,11 @@ jest.mock("embla-carousel-react", () => ({
 // Framer Motion mock
 jest.mock("framer-motion", () => {
   const Original = jest.requireActual("framer-motion");
+  type DivProps = React.ComponentProps<"div"> & {
+    initial?: any;
+    animate?: any;
+    transition?: any;
+  };
   return {
     ...Original,
     motion: {

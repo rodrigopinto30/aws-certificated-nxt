@@ -2,7 +2,6 @@ import CommunitySection from "@/components/communityCtaSection/CommunityCtaSecti
 import { render, screen } from "@testing-library/react";
 import { communityBenefits } from "@/data/community-data";
 import { CertificacionPaso } from "@/types";
-import { Container } from "lucide-react";
 
 describe("Community Cta Section", () => {
   it("Should render title", () => {

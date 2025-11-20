@@ -1,8 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import CertificationCard from "@/components/coreCurriculumSection/CertificationCard";
-import { AwsCertification } from "@/types";
 import { awsCertifications } from "@/data/aws-certifications";
-import { Award, LucideIcon } from "lucide-react";
 import "@testing-library/jest-dom";
 import CoreCurriculumSection from "@/components/coreCurriculumSection/CoreCurriculumSection";
 
