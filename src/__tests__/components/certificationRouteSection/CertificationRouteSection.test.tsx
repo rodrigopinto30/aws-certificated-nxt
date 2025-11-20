@@ -76,7 +76,7 @@ describe("Certification route section", () => {
       id: 0,
       label: undefined,
       value: undefined,
-    } as Metrica;
+    } as unknown as Metrica;
 
     render(<MetricaCard met={brokenItem} />);
     expect(screen.getByTestId("metrica-props-card")).toBeInTheDocument();
