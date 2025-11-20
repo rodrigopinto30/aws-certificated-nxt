@@ -9,14 +9,19 @@ export interface Metrica {
     icon?: ElementType;
 }
 
+export type AwsCertificationLevel = 
+  | "Foundational"
+  | "Associate"
+  | "Professional"
+  | "Specialty";
 export interface AwsCertification {
     id: number;
     title: string;
-    level: 'Foundational' | 'Associate' | 'Professional' | 'Specialty';
+    level: AwsCertificationLevel;
     description: string;
     path: string;
     // icon: ElementType;
-    icon: string;
+    icon?: string;
 }
 
 export interface Testimonios {

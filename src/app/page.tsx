@@ -3,8 +3,6 @@ import CommunityCtaSection from "@/components/communityCtaSection/CommunityCtaSe
 import CoreCurriculumSection from "@/components/coreCurriculumSection/CoreCurriculumSection";
 import HandsOnLabsSection from "@/components/handsOnLabsSection/HandsOnLabsSection";
 import HeroSection from "@/components/heroSection/HeroSection";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 export default function Home() {
   return (

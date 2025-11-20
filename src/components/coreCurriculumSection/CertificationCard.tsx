@@ -21,7 +21,6 @@ const levelColors = {
 };
 
 const CertificationCard = ({ cert }: CertificationCardProps) => {
-  const IconComponent = cert.icon;
   const levelClass = levelColors[cert.level] || "bg-gray-500";
 
   return (
