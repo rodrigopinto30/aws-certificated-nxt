@@ -1,4 +1,4 @@
-name: Test CI
+name: Quality & Test CI
 
 on:
   push:
@@ -25,5 +25,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # Ejecutar Linter (Linting)
+      - name: Run ESLint
+        run: npm run lint
+
+      # Comprobacion de tipos
+      - name: Run TypeScript check
+        run: npm run type-check
+
+      # Auditoria de dependencias
+      - name: Run dependency audit
+        run: npm audit --audit-level=high
+
+      # Ejecución de tests
       - name: Run tests
         run: npm test -- -u
