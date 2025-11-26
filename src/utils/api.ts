@@ -22,7 +22,8 @@ console.log(data)
 }
 
 export async function signupUser(data: SignupData): Promise<{ message: string }> {
-  const { confirmPassword, ...signupData } = data; 
+  // const { confirmPassword, ...signupData } = data; 
+  const {...signupData } = data; 
   console.log(data)
   const response = await fetch(`${API_BASE_URL}/signup`, {
     method: 'POST',
