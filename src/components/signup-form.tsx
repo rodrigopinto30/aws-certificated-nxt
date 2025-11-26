@@ -30,8 +30,12 @@ export default function SignupForm() {
 
       console.log("Login successful. Received JWT:", token);
       alert("Login successful! Token received.");
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred during login.");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message || "An unexpected error occurred during login.");
+      } else {
+        setError("An unexpected error occurred during login.");
+      }
     } finally {
       setIsSubmitting(false);
     }
