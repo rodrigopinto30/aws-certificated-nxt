@@ -45,7 +45,10 @@ export default function LoginForm() {
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-1">
       <div className="w-full max-w-sm">
-        <Card className="w-full max-w-md mx-auto shadow-xl rounded-xl">
+        <Card
+          className="w-full max-w-md mx-auto shadow-xl rounded-xl"
+          data-testId="login-card"
+        >
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-gray-800">
               Sign In
@@ -58,13 +61,16 @@ export default function LoginForm() {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               {/* Email Input */}
               <div className="space-y-1">
-                <Label htmlFor="email">Email Address</Label>
+                <Label htmlFor="email" data-testId="label-card">
+                  Email Address
+                </Label>
                 <Input
                   id="email"
                   type="email"
                   placeholder="you@example.com"
                   {...register("email")}
                   className={errors.email ? "border-red-500" : ""}
+                  data-testId="input-card"
                 />
                 {errors.email && (
                   <p className="text-xs text-red-500">{errors.email.message}</p>
@@ -73,13 +79,16 @@ export default function LoginForm() {
 
               {/* Password Input */}
               <div className="space-y-1">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" data-testId="label-card">
+                  Password
+                </Label>
                 <Input
                   id="password"
                   type="password"
                   placeholder="••••••••"
                   {...register("password")}
                   className={errors.password ? "border-red-500" : ""}
+                  data-testId="input-card"
                 />
                 {errors.password && (
                   <p className="text-xs text-red-500">
@@ -98,7 +107,12 @@ export default function LoginForm() {
                 </div>
               )}
 
-              <Button type="submit" className="w-full " disabled={isSubmitting}>
+              <Button
+                type="submit"
+                className="w-full "
+                disabled={isSubmitting}
+                data-testid="button-login"
+              >
                 {isSubmitting ? "Signing In..." : "Sign In"}
               </Button>
               <FieldDescription className="text-center">
