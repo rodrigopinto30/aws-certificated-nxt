@@ -1,72 +1,109 @@
-import { cn } from "@/lib/utils";
+"use client";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { LoginSchema, LoginData } from "@/schemas/auth";
+import { loginUser } from "@/utils/api";
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { FieldDescription } from "@/components/ui/field";
 import Link from "next/link";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export default function LoginForm() {
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginData>({
+    resolver: zodResolver(LoginSchema),
+  });
+
+  const onSubmit = async (data: LoginData) => {
+    setError(null);
+    setIsSubmitting(true);
+    try {
+      const token = await loginUser(data);
+
+      alert("Login successful! Token received.");
+    } catch (err: any) {
+      setError(err.message || "An unexpected error occurred during login.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
-        <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
-            <FieldGroup>
-              <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-1">
+      <div className="w-full max-w-sm">
+        <Card className="w-full max-w-md mx-auto shadow-xl rounded-xl">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold text-gray-800">
+              Sign In
+            </CardTitle>
+            <p className="text-sm text-gray-500">
+              Access your cloud training dashboard.
+            </p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              {/* Email Input */}
+              <div className="space-y-1">
+                <Label htmlFor="email">Email Address</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
-                  required
+                  placeholder="you@example.com"
+                  {...register("email")}
+                  className={errors.email ? "border-red-500" : ""}
                 />
-              </Field>
-              <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password">Password</FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                  >
-                    Forgot your password?
-                  </a>
+                {errors.email && (
+                  <p className="text-xs text-red-500">{errors.email.message}</p>
+                )}
+              </div>
+
+              {/* Password Input */}
+              <div className="space-y-1">
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="••••••••"
+                  {...register("password")}
+                  className={errors.password ? "border-red-500" : ""}
+                />
+                {errors.password && (
+                  <p className="text-xs text-red-500">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Error Message */}
+              {error && (
+                <div
+                  className="p-3 bg-red-100 border border-red-300 text-red-700 text-sm rounded-lg"
+                  role="alert"
+                >
+                  {error}
                 </div>
-                <Input id="password" type="password" required />
-              </Field>
-              <Field>
-                <Button type="submit">Login</Button>
-                <Button variant="outline" type="button">
-                  Login with Google
-                </Button>
-                <FieldDescription className="text-center">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/signup">Sign up</Link>
-                </FieldDescription>
-              </Field>
-            </FieldGroup>
-          </form>
-        </CardContent>
-      </Card>
+              )}
+
+              <Button type="submit" className="w-full " disabled={isSubmitting}>
+                {isSubmitting ? "Signing In..." : "Sign In"}
+              </Button>
+              <FieldDescription className="text-center">
+                Don&apos;t have an account? <Link href="/signup">Sign up</Link>
+              </FieldDescription>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }
