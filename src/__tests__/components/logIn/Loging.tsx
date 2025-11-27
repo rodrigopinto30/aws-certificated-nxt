@@ -103,7 +103,7 @@ describe("Sign in tests", () => {
     expect(screen.getByText(/don't have/i)).toBeInTheDocument();
   });
 
-  it("Sould match snapshot", () => {
+  it("Should match snapshot", () => {
     const { container } = render(<LoginForm />);
     expect(container).toMatchSnapshot();
   });

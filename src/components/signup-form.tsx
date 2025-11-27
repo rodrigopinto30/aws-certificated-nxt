@@ -42,9 +42,15 @@ export default function SignupForm() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto shadow-xl rounded-xl">
+    <Card
+      className="w-full max-w-md mx-auto shadow-xl rounded-xl"
+      data-testId="signup-card"
+    >
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl font-bold text-gray-800">
+        <CardTitle
+          className="text-2xl font-bold text-gray-800"
+          data-testId="signup-title"
+        >
           Sign Up
         </CardTitle>
         <p className="text-sm text-gray-500">
@@ -55,13 +61,16 @@ export default function SignupForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name Input */}
           <div className="space-y-1">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name" data-testId="signup-label">
+              Name
+            </Label>
             <Input
               id="name"
               type="text"
               placeholder="John"
               {...register("name")}
               className={errors.name ? "border-red-500" : ""}
+              data-testId="signup-input"
             />
             {errors.name && (
               <p className="text-xs text-red-500">{errors.name.message}</p>
@@ -70,13 +79,16 @@ export default function SignupForm() {
 
           {/* Last name Input */}
           <div className="space-y-1">
-            <Label htmlFor="lastName">Last Name</Label>
+            <Label htmlFor="lastName" data-testId="signup-label">
+              Last Name
+            </Label>
             <Input
               id="lastName"
               type="text"
               placeholder="Doe"
               {...register("lastName")}
               className={errors.lastName ? "border-red-500" : ""}
+              data-testId="signup-input"
             />
             {errors.lastName && (
               <p className="text-xs text-red-500">{errors.lastName.message}</p>
@@ -85,13 +97,16 @@ export default function SignupForm() {
 
           {/* Email Input */}
           <div className="space-y-1">
-            <Label htmlFor="email">Email Address</Label>
+            <Label htmlFor="email" data-testId="signup-label">
+              Email Address
+            </Label>
             <Input
               id="email"
               type="email"
               placeholder="you@example.com"
               {...register("email")}
               className={errors.email ? "border-red-500" : ""}
+              data-testId="signup-input"
             />
             {errors.email && (
               <p className="text-xs text-red-500">{errors.email.message}</p>
@@ -100,13 +115,16 @@ export default function SignupForm() {
 
           {/* Password Input */}
           <div className="space-y-1">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password" data-testId="signup-label">
+              Password
+            </Label>
             <Input
               id="password"
               type="password"
               placeholder="••••••••"
               {...register("password")}
               className={errors.password ? "border-red-500" : ""}
+              data-testId="signup-input"
             />
             {errors.password && (
               <p className="text-xs text-red-500">{errors.password.message}</p>
@@ -114,13 +132,16 @@ export default function SignupForm() {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="confirmPassword">Confirm Password</Label>
+            <Label htmlFor="confirmPassword" data-testId="signup-label">
+              Confirm Password
+            </Label>
             <Input
               id="confirmPassword"
               type="password"
               placeholder="••••••••"
               {...register("confirmPassword")}
               className={errors.confirmPassword ? "border-red-500" : ""}
+              data-testId="signup-input"
             />
             {errors.confirmPassword && (
               <p className="text-xs text-red-500">
@@ -139,7 +160,12 @@ export default function SignupForm() {
             </div>
           )}
 
-          <Button type="submit" className="w-full " disabled={isSubmitting}>
+          <Button
+            type="submit"
+            className="w-full "
+            disabled={isSubmitting}
+            data-testId="signup-button"
+          >
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </Button>
         </form>
