@@ -2,6 +2,14 @@ import SignupForm from "@/components/signup-form";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
+jest.mock("next/navigation", () => ({
+  useRouter: () => ({
+    push: jest.fn(),
+    replace: jest.fn(),
+    refresh: jest.fn(),
+  }),
+}));
+
 describe("Tests of Sign up", () => {
   it("Should render card", () => {
     render(<SignupForm />);
