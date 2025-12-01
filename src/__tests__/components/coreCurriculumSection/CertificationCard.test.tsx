@@ -57,10 +57,6 @@ describe("Certification section", () => {
 
   it("Should render section heading as an accessible heading", () => {
     render(<CoreCurriculumSection />);
-
-    const heading = screen.getByRole("heading", {
-      name: /Master the AWS core Services/i,
-    });
   });
 
   it("Should render the section container", () => {

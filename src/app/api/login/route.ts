@@ -3,13 +3,18 @@ import { LoginSchema } from '@/schemas/auth';
 import { getDbConnection } from '@/lib/db';
 import { verifyPassword, generateAuthToken } from '@/lib/auth';
 import { setCookie } from 'cookies-next'; 
+import { RowDataPacket } from "mysql2/promise";
 
+interface UserRow extends RowDataPacket {
+  id: number;
+  password_hash: string;
+}
 
 export default async function loginHandler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method Not Allowed' });
   }
-
+ 
   const validationResult = LoginSchema.safeParse(req.body);
   if (!validationResult.success) {
     return res.status(400).json({ message: 'Invalid credentials provided.' });
@@ -20,7 +25,7 @@ export default async function loginHandler(req: NextApiRequest, res: NextApiResp
   try {
     const db = await getDbConnection();
 
-    const [users] = await db.query<any[]>(
+    const [users] = await db.query<UserRow[]>(
       'SELECT id, password_hash FROM users WHERE email = ?',
       [email]
     );

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema, LoginData } from "@/schemas/auth";
-import { loginUser } from "@/utils/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -30,12 +29,10 @@ export default function LoginForm() {
     resolver: zodResolver(LoginSchema),
   });
 
-  const onSubmit = async (data: LoginData) => {
+  const onSubmit = async () => {
     setError(null);
     setIsSubmitting(true);
     try {
-      // const token = await loginUser(data);
-      // alert("Login successful! Token received.");
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
