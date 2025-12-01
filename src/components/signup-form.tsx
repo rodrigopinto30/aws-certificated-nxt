@@ -9,8 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useRouter } from "next/navigation";
 
 export default function SignupForm() {
+  const router = useRouter();
+
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -29,7 +32,9 @@ export default function SignupForm() {
       const token = await signupUser(data);
 
       console.log("Login successful. Received JWT:", token);
-      alert("Login successful! Token received.");
+      // router.push("/login?message=Signup%20Successful");
+      //alert("Login successful! Token received.");
+      router.push("/login?success=SignupSuccessful");
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message || "An unexpected error occurred during login.");
@@ -44,12 +49,12 @@ export default function SignupForm() {
   return (
     <Card
       className="w-full max-w-md mx-auto shadow-xl rounded-xl"
-      data-testId="signup-card"
+      data-testid="signup-card"
     >
       <CardHeader className="text-center">
         <CardTitle
           className="text-2xl font-bold text-gray-800"
-          data-testId="signup-title"
+          data-testid="signup-title"
         >
           Sign Up
         </CardTitle>
@@ -61,7 +66,7 @@ export default function SignupForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Name Input */}
           <div className="space-y-1">
-            <Label htmlFor="name" data-testId="signup-label">
+            <Label htmlFor="name" data-testid="signup-label">
               Name
             </Label>
             <Input
@@ -70,7 +75,7 @@ export default function SignupForm() {
               placeholder="John"
               {...register("name")}
               className={errors.name ? "border-red-500" : ""}
-              data-testId="signup-input"
+              data-testid="signup-input"
             />
             {errors.name && (
               <p className="text-xs text-red-500">{errors.name.message}</p>
@@ -79,7 +84,7 @@ export default function SignupForm() {
 
           {/* Last name Input */}
           <div className="space-y-1">
-            <Label htmlFor="lastName" data-testId="signup-label">
+            <Label htmlFor="lastName" data-testid="signup-label">
               Last Name
             </Label>
             <Input
@@ -88,7 +93,7 @@ export default function SignupForm() {
               placeholder="Doe"
               {...register("lastName")}
               className={errors.lastName ? "border-red-500" : ""}
-              data-testId="signup-input"
+              data-testid="signup-input"
             />
             {errors.lastName && (
               <p className="text-xs text-red-500">{errors.lastName.message}</p>
@@ -97,7 +102,7 @@ export default function SignupForm() {
 
           {/* Email Input */}
           <div className="space-y-1">
-            <Label htmlFor="email" data-testId="signup-label">
+            <Label htmlFor="email" data-testid="signup-label">
               Email Address
             </Label>
             <Input
@@ -106,7 +111,7 @@ export default function SignupForm() {
               placeholder="you@example.com"
               {...register("email")}
               className={errors.email ? "border-red-500" : ""}
-              data-testId="signup-input"
+              data-testid="signup-input"
             />
             {errors.email && (
               <p className="text-xs text-red-500">{errors.email.message}</p>
@@ -115,7 +120,7 @@ export default function SignupForm() {
 
           {/* Password Input */}
           <div className="space-y-1">
-            <Label htmlFor="password" data-testId="signup-label">
+            <Label htmlFor="password" data-testid="signup-label">
               Password
             </Label>
             <Input
@@ -124,7 +129,7 @@ export default function SignupForm() {
               placeholder="••••••••"
               {...register("password")}
               className={errors.password ? "border-red-500" : ""}
-              data-testId="signup-input"
+              data-testid="signup-input"
             />
             {errors.password && (
               <p className="text-xs text-red-500">{errors.password.message}</p>
@@ -132,7 +137,7 @@ export default function SignupForm() {
           </div>
 
           <div className="space-y-1">
-            <Label htmlFor="confirmPassword" data-testId="signup-label">
+            <Label htmlFor="confirmPassword" data-testid="signup-label">
               Confirm Password
             </Label>
             <Input
@@ -141,7 +146,7 @@ export default function SignupForm() {
               placeholder="••••••••"
               {...register("confirmPassword")}
               className={errors.confirmPassword ? "border-red-500" : ""}
-              data-testId="signup-input"
+              data-testid="signup-input"
             />
             {errors.confirmPassword && (
               <p className="text-xs text-red-500">
@@ -164,7 +169,7 @@ export default function SignupForm() {
             type="submit"
             className="w-full "
             disabled={isSubmitting}
-            data-testId="signup-button"
+            data-testid="signup-button"
           >
             {isSubmitting ? "Signing Up..." : "Sign Up"}
           </Button>
